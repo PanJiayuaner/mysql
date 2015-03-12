@@ -107,16 +107,6 @@ call getScrambledText(T_EST11,T_EST11);
 update patient
 set 
 DataRecordName    = T_EST1,
-PatientFirstName  = T_EST2,
-PatientMiddleName = T_EST3,
-PatientLastName   = T_EST4,
-PatientAddress1   = T_EST5,
-PatientAddress2   = T_EST6,
-PatientCity       = T_EST7,
-PatientId         = T_EST8,
-TreatmentNotes    = T_EST9,
-PatientPhone      = T_EST10,
-PatientSSN        = T_EST11
 
 where RECORDID = (
    select RECORDID from (
@@ -129,6 +119,7 @@ where RECORDID = (
 END //
 DELIMITER ;
 -- update request
+-- 
 DELIMITER //
 Create PROCEDURE `update_request`(IN COUNTER INT)
 BEGIN
@@ -197,24 +188,7 @@ call getScrambledText(T_EST18,T_EST18);
 
 UPDATE Request 
 SET
-Comments          = T_EST1,
-CreditCardNum     = T_EST2,
-CreditCardHolderName  = T_EST3,
-PatientPhone      = T_EST18,
-PatientSSN        = T_EST4,
 PatientFirstName  = T_EST5,
-PatientMiddleName = T_EST6,
-PatientLastName   = T_EST7,
-PatientAddress1   = T_EST8,
-PatientAddress2   = T_EST9,
-PatientCity       = T_EST10,
-PatientId         = T_EST11,
-PrimarySubscriberFirstName = T_EST12,
-PrimarySubscriberLastName  = T_EST13,
-SecondarySubscriberFirstName = T_EST14,
-SecondarySubscriberLastName  = T_EST15,
-ReportingNotes    = T_EST16,
-TreatmentNotes    = T_EST17
 where RECORDID = (
    select RECORDID from (
       select RECORDID, @rownum:=@rownum + 1 as rownumber 
